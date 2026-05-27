@@ -273,6 +273,17 @@
     text-decoration-color: #3a5e3c;
   }
 
+  .card-note {
+    font-size: 11px;
+    color: var(--muted);
+    line-height: 1.5;
+    padding: 7px 10px;
+    border-left: 2px solid rgba(245,200,66,0.35);
+    background: rgba(245,200,66,0.04);
+    border-radius: 0 5px 5px 0;
+  }
+  .card-note strong { color: rgba(245,200,66,0.7); font-weight: 500; }
+
   .card-actions { display: flex; gap: 7px; flex-wrap: wrap; }
   .btn {
     display: flex;
@@ -336,7 +347,7 @@
 <header>
   <div class="header-label">Course Assignments</div>
   <h1>AI <span>Literacy</span></h1>
-  <p class="header-sub">Watch each video, then complete the reflection form.</p>
+  <p class="header-sub">Watch each video, then complete the form. Note: You may only submit ONCE per form.</p>
 </header>
 
 <div class="progress-bar-wrap">
@@ -355,7 +366,7 @@
 const assignments = [
   { title: "Launch",                        videoId: "N3-gU6gyL_Q", video: "https://youtu.be/N3-gU6gyL_Q", form: "https://docs.google.com/forms/d/e/1FAIpQLSe0Kl8ByoECkhj7eSJ-yaKcRTLDWO9aJNySsLKQqATH7gznnQ/viewform" },
   { title: "How ChatGPT Works",             videoId: "Ik7mLwRY4a0", video: "https://youtu.be/Ik7mLwRY4a0", form: "https://docs.google.com/forms/d/e/1FAIpQLSeCvDoxLvCd1zDrnQLkb58NrD0F2b19Lwcj2W0G4ibeZpXcQw/viewform" },
-  { title: "What Happens to Your Data?",    videoId: "gcKG1ik6kls", video: "https://youtu.be/gcKG1ik6kls", form: "https://docs.google.com/forms/d/e/1FAIpQLScCiEoBfGBmmGWsGODk67eOIQnnKrQm1kF8vfBQJ9_n5skayA/viewform" },
+  { title: "What Happens to Your Data?",    videoId: "gcKG1ik6kls", video: "https://youtu.be/gcKG1ik6kls", form: "https://docs.google.com/forms/d/e/1FAIpQLScCiEoBfGBmmGWsGODk67eOIQnnKrQm1kF8vfBQJ9_n5skayA/viewform", note: "This video explains what free AI tools can do with your data. If you have a DDD Enterprise account (for team leads, project managers, supervisors, and other management level employees) for ChatGPT and Gemini, your data is not sold or used to train models." },
   { title: 'The "Ask Me Questions" Prompt', videoId: "J54JsMLwfv8", video: "https://youtu.be/J54JsMLwfv8", form: "https://forms.gle/FZQeQr6wiGumm5yBA" },
   { title: "AI and Privacy",                videoId: "0F24_tvxpxY", video: "https://youtu.be/0F24_tvxpxY", form: "https://forms.gle/wuugWrZYByBWCDtT7" },
   { title: "Tokenization",                  videoId: "FySwFy6eLGU", video: "https://youtu.be/FySwFy6eLGU", form: "https://docs.google.com/forms/d/e/1FAIpQLSfkMb_eInlKYyrDb4oUvuMMI31t7Ysk_nTsFrDl931FkNDquQ/viewform" },
@@ -438,6 +449,7 @@ function render() {
           </div>
         </div>
         <div class="card-title">${a.title}</div>
+        ${a.note ? `<div class="card-note"><strong>Note:</strong> ${a.note}</div>` : ''}
         <div class="card-actions">
           <a class="btn btn-video" href="${a.video}" target="_blank" rel="noopener">
             <svg width="10" height="10" viewBox="0 0 12 12" fill="currentColor"><path d="M2 2.4C2 1.56 2.93 1.07 3.62 1.54l6.4 4.1a.8.8 0 0 1 0 1.32l-6.4 4.1C2.93 11.43 2 10.94 2 10.1V2.4z"/></svg>
